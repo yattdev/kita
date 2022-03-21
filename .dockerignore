@@ -1,0 +1,15 @@
+node_modules
+build
+*__pycache__/
+.coverage
+db.sqlite3
+*media/
+*mediafiles/
+*static/
+*staticfiles/
+.dockerignore
+.git*
+LICENSE.txt
+READ-ME.txt
+README.txt
+

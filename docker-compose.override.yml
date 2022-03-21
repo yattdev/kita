@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  sanic:
+    build:
+        context: .
+        dockerfile: ./Dockerfile
+    restart: always
+    command: sanic server.app --worker 4 -H 0.0.0.0 -p 8000
+    env_file:
+        - ./.env # content env variable for databases and django
+    volumes:
+      - .:/home/alassane/kita
+      - assets_volume:/home/alassane/kita/assets/
+
+volumes:
+    assets_volume:

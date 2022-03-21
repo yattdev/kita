@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  sanic:
+    expose:
+        - 8000
+    networks:
+        - kita_network
+        - nginx_network
+
+networks:
+    kita_network:
+    nginx_network: # This networks contains nginx-proxy, already exists.
+        external: true
+        name: nginx_server_nginx_network
