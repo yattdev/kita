@@ -6,6 +6,19 @@ from sanic.response import json, html, text
 import os
 
 app = Sanic(__name__)
+CORS_OPTIONS = {
+    "resources": r'/*',
+    "origins": "*",
+    "methods": ["GET", "POST", "HEAD", "OPTIONS"]
+}
+# Disable sanic-ext built-in CORS, and add the Sanic-CORS plugin
+Extend(app,
+       extensions=[CORS],
+       config={
+           "CORS": False,
+           "CORS_OPTIONS": CORS_OPTIONS
+       })
+
 # Serves files from the static folder to the URL /static
 app.static('/assets', './assets/')
 
@@ -14,4 +27,5 @@ def index(request):
   template = open(os.getcwd() + "/src/index.html")
   return html(template.read())
 
-app.run(host='0.0.0.0')
+if __name__ == "__main__":
+    app.run()
