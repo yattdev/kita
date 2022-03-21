@@ -3,6 +3,8 @@
 
 from sanic import Sanic
 from sanic.response import json, html, text
+from sanic_ext import Extend
+from sanic_cors.extension import CORS
 import os
 
 app = Sanic(__name__)
